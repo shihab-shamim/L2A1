@@ -39,7 +39,7 @@ class Person {
 
 
 
-// problems four
+
 
 const filterByRating =(value:{title:string,rating:number}[]):{title:string,rating:number}[]=>{
   
