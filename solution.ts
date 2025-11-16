@@ -5,7 +5,8 @@ const formatValue =(value:string | number |boolean):string | number |boolean=>{
     if(typeof value === "string") return value.toUpperCase();
      if(typeof value === "number") return value *10 ;
      if(typeof value === "boolean") return !value ;
-    return "please valid input"
+     return value;
+   
 
 
 }
@@ -13,8 +14,8 @@ const formatValue =(value:string | number |boolean):string | number |boolean=>{
 
 
 const getLength =(value:string | any[]):number=>{
-    if(typeof value ==="string") return value?.length
-    if(Array.isArray(value)) return value?.length
+    if(typeof value ==="string") return value.length
+    if(Array.isArray(value)) return value.length
     return 0;
 
 }
@@ -32,7 +33,7 @@ class Person {
 
     }
 
-    getDetails(){
+    getDetails():string{
       return `Name: ${this.name}, Age: ${this.age}`;
     }
 }
@@ -43,7 +44,7 @@ class Person {
 
 const filterByRating =(value:{title:string,rating:number}[]):{title:string,rating:number}[]=>{
   
-    const result=value.filter((item,index)=>item?.rating >=4)
+    const result=value.filter(item=>item.rating >=4)
     return result
 
     
@@ -55,9 +56,9 @@ const filterByRating =(value:{title:string,rating:number}[]):{title:string,ratin
 
 
  
-const filterActiveUsers  =(value:{id: number, name: string, email: string, isActive: boolean}[])=>{
+const filterActiveUsers  =(value:{id: number, name: string, email: string, isActive: boolean}[]):{id: number, name: string, email: string, isActive: boolean}[]=>{
 
-     const result=value.filter((item,index)=>item?.isActive ===true)
+     const result=value.filter(item=>item.isActive ===true)
     return result
 
 
@@ -76,7 +77,7 @@ interface Book {
 }
 
 const printBookDetails =(value:Book):void=>{
-    console.log(`Title: ${value?.title}, Author: ${value?.author}, Published: ${value?.publishedYear}, Available: ${value?.isAvailable?'Yes':'No'}`);
+    console.log(`Title: ${value.title}, Author: ${value.author}, Published: ${value?.publishedYear}, Available: ${value.isAvailable?'Yes':'No'}`);
 
 }
 
