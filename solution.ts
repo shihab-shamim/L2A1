@@ -1,6 +1,6 @@
 
 
-// problems one
+
 const formatValue =(value:string | number |boolean):string | number |boolean=>{
     if(typeof value === "string") return value.toUpperCase();
      if(typeof value === "number") return value *10 ;
@@ -10,7 +10,7 @@ const formatValue =(value:string | number |boolean):string | number |boolean=>{
 
 }
 
-// problems two
+
 
 const getLength =(value:string | any[]):number=>{
     if(typeof value ==="string") return value?.length
@@ -21,7 +21,6 @@ const getLength =(value:string | any[]):number=>{
 
 
 
-//  problems 3 
 
 
 class Person {
@@ -51,14 +50,10 @@ const filterByRating =(value:{title:string,rating:number}[]):{title:string,ratin
 
 }
 
-const books = [
-  { title: 'Book A', rating: 3.5 },
-  { title: 'Book B', rating: 3.2 },
-  { title: 'Book C', rating: 3.0 },
-];
 
 
-// problems five
+
+
  
 const filterActiveUsers  =(value:{id: number, name: string, email: string, isActive: boolean}[])=>{
 
@@ -68,15 +63,11 @@ const filterActiveUsers  =(value:{id: number, name: string, email: string, isAct
 
 }
 
-const users = [
-  { id: 1, name: 'Rakib', email: 'rakib@example.com', isActive: true },
-  { id: 2, name: 'Asha', email: 'asha@example.com', isActive: false },
-  { id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true },
-];
 
 
 
-// problems six
+
+
 interface Book {
   title: string;
   author: string;
@@ -90,7 +81,7 @@ const printBookDetails =(value:Book):void=>{
 }
 
 
-// problems seven 
+
 const getUniqueValues =(arr1:Array<number |string>,arr2:Array<number |string>):Array<number |string>=>{
    const result:Array<number |string> = [];
 
@@ -115,7 +106,7 @@ const getUniqueValues =(arr1:Array<number |string>,arr2:Array<number |string>):A
 
 }
 
-// problems eight 
+
 
 const calculateTotalPrice =(value:{name:string,price:number,quantity:number,discount?:number}[])=>{
       return value.reduce((total, product) => {
@@ -129,12 +120,6 @@ const calculateTotalPrice =(value:{name:string,price:number,quantity:number,disc
 }
 
 
-const products = [
-  { name: 'Pen', price: 10, quantity: 2 },
-  { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
-  { name: 'Bag', price: 50, quantity: 1, discount: 20 },
-];
 
-console.log(calculateTotalPrice(products));
 
 
