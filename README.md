@@ -1,17 +1,89 @@
-📖 About The Project
+Question:TypeScript-এ any, unknown, এবং never টাইপের পার্থক্য
 
-A modern blogging platform designed for developers and content creators. Built to be fast, minimalist, and highly customizable.
+Ans:  
+------------any------------
+1.any টাইপ দিয়ে আপনি TypeScript কে বলবেন, “এই ভ্যারিয়েবল এর টাইপ যেকোনো হতে পারে, আমাকে type-check করার দরকার নেই।”
+2.এটি type-safety ভেঙে দেয়, তাই খুব সতর্কভাবে ব্যবহার করতে হবে।
+3.let data: any;
+data = 10;
+data = "Shihab";
+data = true; 
 
-✨ Features
+------------unknown------------
+1.unknown টাইপ হচ্ছে type-safe any.
+2.কোনো value কে unknown টাইপে assign করা যায়, কিন্তু তার উপর operations করার আগে type-check করতে হবে।
+example:let data: unknown;
+data = 10;
+data = "Shihab";
 
-📝 Create, Edit & Delete Posts
+if (typeof data === "string") {
+  console.log(data.toUpperCase()); 
+}
 
-🎨 Beautiful UI & Animated Components
 
-🔍 Search & Filter blog posts
+------------never------------
+1.never টাইপ ব্যবহার হয় সেই ফাংশনের জন্য যা কখনো return করে না বা সবসময় error throw করে।
+2.যেমন infinite loop বা exception throw করা।
+example:function errorFunction(msg: string): never {
+  throw new Error(msg);
+}
 
-🌙 Dark/Light Theme Support
+function infiniteLoop(): never {
+  while (true) {}
+}
 
-📱 Fully Responsive
 
-🔐 Optional User Auth
+------------সারসংক্ষেপ:------------
+1.any = type-check বাদ দেয়
+2.unknown = type-safe any
+3.never = কখনো return করবে না
+
+
+Question:Provide an example of using union and intersection types in TypeScript?
+Ans:TypeScript-এ union এবং intersection টাইপ ব্যবহার করা হয় flexible এবং powerful type definitions তৈরি করতে।
+
+Union Type (|):Union টাইপ বলতে বোঝায় — একটি ভ্যারিয়েবল একটি টাইপ অথবা অন্য একটি টাইপ হতে পারে।  👉 এটি “OR” সম্পর্ক বোঝায়।
+
+example:type Id = string | number;
+
+function printId(id: Id) {
+  console.log("Your ID is:", id);
+}
+
+printId(101);
+printId("A-2025");
+
+1.Id টাইপে value string অথবা number যেকোনোটি হতে পারে।
+2.এটি আমাদের flexibility দেয়, যা API বা dynamic input এর ক্ষেত্রে খুবই কাজে লাগে।
+
+
+
+Intersection Type (&) :Intersection টাইপ বোঝায় — একটি ভ্যারিয়েবল একাধিক টাইপের সব প্রপার্টি একসাথে পাবে। 👉 এটি “AND” সম্পর্ক বোঝায়।
+
+example:type Person = {
+  name: string;
+  age: number;
+};
+
+type Employee = {
+  employeeId: number;
+  department: string;
+};
+
+type Staff = Person & Employee;
+
+const staffMember: Staff = {
+  name: "Shihab",
+  age: 25,
+  employeeId: 1001,
+  department: "Engineering",
+};
+
+1.Staff টাইপটি Person & Employee এর সব প্রপার্টি combine করেছে।
+2.এখন কোনো staff object তৈরির সময় সব property থাকতে হবে।
+3.Intersection type multiple inheritance এর মতো কাজ করে।
+
+
+
+
+
