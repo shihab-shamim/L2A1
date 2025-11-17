@@ -6,8 +6,6 @@ const formatValue =(value:string | number |boolean):string | number |boolean=>{
      if(typeof value === "number") return value *10 ;
      if(typeof value === "boolean") return !value ;
      return value;
-   
-
 
 }
 
@@ -34,7 +32,7 @@ class Person {
     }
 
     getDetails():string{
-      return `Name: ${this.name}, Age: ${this.age}`;
+      return `'Name: ${this.name}, Age: ${this.age}'`;
     }
 }
 
