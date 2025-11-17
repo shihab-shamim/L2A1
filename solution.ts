@@ -11,12 +11,13 @@ const formatValue =(value:string | number |boolean):string | number |boolean=>{
 
 
 
-const getLength =(value:string | any[]):number=>{
+const getLength =(value:string | unknown[]):number=>{
     if(typeof value ==="string") return value.length
     if(Array.isArray(value)) return value.length
     return 0;
 
 }
+
 
 
 
@@ -40,14 +41,21 @@ class Person {
 
 
 
+
 const filterByRating =(value:{title:string,rating:number}[]):{title:string,rating:number}[]=>{
   
-    const result=value.filter(item=>item.rating >=4)
-    return result
+    value.forEach(item => {
+    if (item.rating < 0 || item.rating > 5) {
+      throw new Error(`Invalid rating '${item.rating}' for "${item.title}". Rating must be between 0 and 5.`);
+    }
+  });
 
-    
+  return value.filter(item => item.rating >= 4);
+
 
 }
+
+
 
 
 
@@ -74,10 +82,12 @@ interface Book {
   isAvailable: boolean;
 }
 
+
 const printBookDetails =(value:Book):void=>{
     console.log(`Title: ${value.title}, Author: ${value.author}, Published: ${value?.publishedYear}, Available: ${value.isAvailable?'Yes':'No'}`);
 
 }
+
 
 
 
